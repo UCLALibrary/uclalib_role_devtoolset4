@@ -1,0 +1,14 @@
+---
+
+galaxy_info:
+  author: Kevin S. Clarke
+  description: Ansible role to install CentOS' devtoolset-4
+  license: BSD 3-Clause
+  min_ansible_version: 1.9
+  platforms:
+  - name: EL
+    versions:
+    - 6
+  categories:
+  - system
+dependencies: []

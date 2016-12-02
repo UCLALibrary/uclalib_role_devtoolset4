@@ -1,0 +1,21 @@
+---
+
+- name: Install CentOS Release Software Collections (SCL)
+  yum:
+    name: centos-release-scl
+    state: installed
+
+- name: Install devtoolset4 packages
+  yum: pkg={{ item }} state=installed
+  with_items: "{{ dt4_packages }}"
+
+- name: Check that devtoolset source file exists
+  stat: path="/opt/rh/devtoolset-4/enable"
+  register: devtoolset_enable_avail
+
+- name: Update Bash environmental variables
+  lineinfile:
+    dest: /etc/profile.d/devtoolset4.sh
+    create: yes
+    line: 'source /opt/rh/devtoolset-4/enable'
+  when: devtoolset_enable_avail.stat.exists == True
