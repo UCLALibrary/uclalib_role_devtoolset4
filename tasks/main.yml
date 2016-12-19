@@ -17,5 +17,5 @@
   lineinfile:
     dest: /etc/profile.d/devtoolset4.sh
     create: yes
-    line: 'source /opt/rh/devtoolset-4/enable'
+    line: '# source /opt/rh/devtoolset-4/enable'
   when: devtoolset_enable_avail.stat.exists == True
