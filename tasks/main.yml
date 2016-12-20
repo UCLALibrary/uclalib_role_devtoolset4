@@ -19,3 +19,6 @@
     create: yes
     line: 'source /opt/rh/devtoolset-4/enable'
   when: devtoolset_enable_avail.stat.exists == True
+
+# Remove janky sudo - https://bugzilla.redhat.com/show_bug.cgi?id=1319936
+- file: path=/opt/rh/devtoolset-4/root/usr/bin/sudo state=absent
