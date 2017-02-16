@@ -1,13 +1,13 @@
 ---
 
+language: bash
+
 env:
-  - distro: centos6
-    init: /sbin/init
+  - distro=centos6 init=/sbin/init
 
 services:
   - docker
 
-# geerlingguy makes Docker builds specifically for Ansible testing
 before_install:
   - 'docker pull geerlingguy/docker-${distro}-ansible:latest'
 
@@ -26,5 +26,5 @@ script:
   - 'docker exec "$(cat ${container_id})" /bin/bash -c "source /etc/profile.d/devtoolset4.sh && hash gcc 2>/dev/null"'
   - 'docker exec "$(cat ${container_id})" /bin/bash -c "source /etc/profile.d/devtoolset4.sh && hash g++ 2>/dev/null"'
 
-notifications:
+#notifications:
   # None configured yet
