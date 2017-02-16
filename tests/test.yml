@@ -3,4 +3,4 @@
 - hosts: all
 
   roles:
-    - ansible_uclalib_role_devtoolset4
+    - uclalib_role_devtoolset4
