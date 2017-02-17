@@ -20,17 +20,17 @@ die () {
     echo ""
   fi
 
-  exit $?
+  exit $2
 }
 
 # Validation tests that are specific to a particular distro
 if [ "$1" == "centos6" ]; then
-  docker exec --tty "$(cat ${2})" env TERM=xterm yum list installed centos-release-scl || die "$2"
-  docker exec --tty "$(cat ${2})" env TERM=xterm yum list installed devtoolset-4-gcc || die "$2"
-  docker exec --tty "$(cat ${2})" env TERM=xterm yum list installed devtoolset-4-gcc-c++ || die "$2"
-  docker exec --tty "$(cat ${2})" env TERM=xterm yum list installed devtoolset-4-libstdc++-devel || die "$2"
-  docker exec "$(cat ${2})" /bin/bash -c "source /etc/profile.d/devtoolset4.sh && hash gcc 2>/dev/null" || die "$2"
-  docker exec "$(cat ${2})" /bin/bash -c "source /etc/profile.d/devtoolset4.sh && hash g++ 2>/dev/null" || die "$2"
+  docker exec --tty "$(cat ${2})" env TERM=xterm yum list installed centos-release-scl || die "$2" "$?"
+  docker exec --tty "$(cat ${2})" env TERM=xterm yum list installed devtoolset-4-gcc || die "$2" "$?"
+  docker exec --tty "$(cat ${2})" env TERM=xterm yum list installed devtoolset-4-gcc-c++ || die "$2" "$?"
+  docker exec --tty "$(cat ${2})" env TERM=xterm yum list installed devtoolset-4-libstdc++-devel || die "$2" "$?"
+  docker exec "$(cat ${2})" /bin/bash -c "source /etc/profile.d/devtoolset4.sh && hash gcc 2>/dev/null" || die "$2" "$?"
+  docker exec "$(cat ${2})" /bin/bash -c "source /etc/profile.d/devtoolset4.sh && hash g++ 2>/dev/null" || die "$2" "$?"
 else
   echo "Unexpected distro value: ${1}"; exit 1
 fi
