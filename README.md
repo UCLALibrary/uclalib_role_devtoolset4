@@ -1,4 +1,4 @@
-# uclalib_role_devtoolset4
+# uclalib_role_devtoolset4 [![Build Status](https://travis-ci.org/UCLALibrary/uclalib_role_devtoolset4.svg?branch=master)](https://travis-ci.org/UCLALibrary/uclalib_role_devtoolset4)
 
 Ansible role to install devtoolset-4 on CentOS 6. It should work on RHEL 6, too, but has not yet been tested there.
 
