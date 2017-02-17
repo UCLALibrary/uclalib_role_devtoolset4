@@ -27,7 +27,7 @@ die () {
   echo "    docker rm -f \$(docker ps -a -q)"
   echo ""
 
-  exit $?
+  exit 1
 }
 
 # Our tests need Docker installed
